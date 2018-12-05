@@ -180,7 +180,7 @@ lws_jwk_export(struct lws_jwk *s, int _private, char *p, size_t len);
  * turn while it return 0 (nonzero return from the callback terminates the
  * iteration through any further keys, leaving the last one in s).
  */
-LWS_VISIBLE int
+LWS_VISIBLE LWS_EXTERN int
 lws_jwk_load(struct lws_jwk *s, const char *filename,
 	     lws_jwk_key_import_callback cb, void *user);
 
@@ -191,7 +191,7 @@ lws_jwk_load(struct lws_jwk *s, const char *filename,
  *
  * Returns 0 for OK or -1 for failure
  */
-LWS_VISIBLE int
+LWS_VISIBLE LWS_EXTERN int
 lws_jwk_save(struct lws_jwk *s, const char *filename);
 
 /** lws_jwk_rfc7638_fingerprint() - jwk to RFC7638 compliant fingerprint
@@ -201,6 +201,9 @@ lws_jwk_save(struct lws_jwk *s, const char *filename);
  *
  * Returns 0 for OK or -1 for failure
  */
-LWS_VISIBLE int
+LWS_VISIBLE LWS_EXTERN int
 lws_jwk_rfc7638_fingerprint(struct lws_jwk *s, char *digest32);
+
+LWS_VISIBLE LWS_EXTERN int
+lws_jwk_dump(struct lws_jwk *s);
 ///@}

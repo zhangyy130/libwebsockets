@@ -61,6 +61,7 @@
    #include <mbedtls/gcm.h>
    #include <mbedtls/x509_crt.h>
    #include <mbedtls/x509_csr.h>
+   #include <mbedtls/ecp.h>
    #include "tls/mbedtls/wrapper/include/openssl/ssl.h" /* wrapper !!!! */
   #else
    #include <openssl/ssl.h>
@@ -194,7 +195,7 @@ lws_ssl_client_connect1(struct lws *wsi);
 LWS_EXTERN int
 lws_ssl_client_connect2(struct lws *wsi, char *errbuf, int len);
 LWS_EXTERN void
-lws_ssl_elaborate_error(void);
+lws_tls_err_describe(void);
 LWS_EXTERN int
 lws_tls_fake_POLLIN_for_buffered(struct lws_context_per_thread *pt);
 LWS_EXTERN int
@@ -287,5 +288,19 @@ lws_ssl_info_callback(const lws_tls_conn *ssl, int where, int ret);
 
 int
 lws_tls_fake_POLLIN_for_buffered(struct lws_context_per_thread *pt);
+
+
+/* genec */
+
+struct lws_jwk_elements;
+struct lws_ec_curves;
+
+LWS_EXTERN const struct lws_ec_curves lws_ec_curves[];
+const struct lws_ec_curves *
+lws_genec_curve(const struct lws_ec_curves *table, const char *name);
+LWS_VISIBLE void
+lws_jwk_destroy_genec_elements(struct lws_jwk_elements *el);
+int
+lws_genec_rngf(void *context, unsigned char *buf, size_t len);
 
 #endif

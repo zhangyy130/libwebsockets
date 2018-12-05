@@ -19,7 +19,7 @@
  *  MA  02110-1301  USA
  *
  *  lws_genrsa provides an RSA abstraction api in lws that works the
- *  same whether you are using openssl or mbedtls hash functions underneath.
+ *  same whether you are using openssl or mbedtls crypto functions underneath.
  */
 #include "core/private.h"
 

@@ -1039,6 +1039,7 @@ if (LWS_WITH_SSL)
 			endif()
 			if (LWS_WITH_GENEC)
 				list(APPEND SOURCES
+					lib/tls/lws-genec-common.c
 					lib/tls/mbedtls/lws-genec.c
 				)
 			endif()
@@ -1063,6 +1064,7 @@ if (LWS_WITH_SSL)
 			endif()
 			if (LWS_WITH_GENEC)
 				list(APPEND SOURCES
+					lib/tls/lws-genec-common.c
 					lib/tls/openssl/lws-genec.c
 				)
 			endif()
